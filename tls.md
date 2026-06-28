@@ -80,3 +80,10 @@ openssl req -new -key key.pem -out server.csr -config san.cnf
 + **-key key.pem**	Usa a chave privada key.pem (gerada no passo anterior) para assinar a requisição.
 + **-out server.csr**	Salva a saída no arquivo server.csr. (.csr é a extensão padrão para Certificate Signing Requests).
 + **-config san.cnf**	Força o OpenSSL a usar o seu arquivo san.cnf em vez do arquivo de configuração padrão do sistema (openssl.cnf). Isso é essencial, pois o arquivo padrão geralmente não habilita o envio de SAN pela CSR.
+
+```
+openssl x509 -req -in server.csr -signkey key.pem -out server.crt -days 365 -extensions req_ext -extfile san.cnf
+```
++ Ele pega a server.csr, assina com a key.pem, gera o server.crt válido por 365 dias.
++ Os parâmetros -extensions req_ext -extfile san.cnf garantem que as extensões SAN que você definiu no arquivo de configuração sejam copiadas para o certificado final.
++ Pronto! Agora você tem key.pem (privada) + server.crt (público com SAN). Ao instalar isso no seu servidor local, o navegador vai confiar em https://localhost e https://127.0.0.1 sem aqueles avisos terríveis (exceto o aviso padrão de "autoassinado", mas você pode clicar em "Avançado" e "Prosseguir" tranquilamente).
