@@ -32,7 +32,7 @@ openssl req -new -x509 -key server.key -out server.crt -days 365 -subj '//CN=loc
 + **-days 365**	Define o prazo de validade: 365 dias (1 ano). Após esse período, o certificado expira e precisa ser renovado.
 + **-subj** '//CN=localhost'	Define o "assunto" (Subject Distinguished Name) do certificado diretamente na linha de comando, sem fazer perguntas interativas (como País, Estado, etc.).
 
-# O <PEM>  da chave
+# O PEM  da chave
 ```bash
 openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:4096
 ```
