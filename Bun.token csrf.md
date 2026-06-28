@@ -7,4 +7,4 @@ const token = Bun.CSRF.generate("my-secret"//palavra chave do token, {
 });
 ```
 esse token é de verificação  de ação,ele não fica salvo no navegador de forma explicita,ele é enviado somente quando a requisição é feita e tem que 
-ser colocado no header,não podendo ser acessado do lado do cliente.já o JWT,memsmo colocando no session da pra pegar.
+ser colocado no header,não podendo ser acessado do lado do cliente.já o JWT,mesmo colocando no session da pra pegar.
