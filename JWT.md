@@ -37,5 +37,5 @@ const a=await Token.verifyJWT(t)
 console.log("Created JWT:\n", t,"\n");
 console.log("Verified Payload:",a);
 ```
-esse Token serve só pra saber qual usuário fez tal ação,não podendo previnir ataques ###csrf,
-pois ele só identifiac o autor,só podendo ser realizado ações por usuários logados.
+esse Token serve só pra saber qual usuário fez tal ação,não podendo previnir ataques **csrf**,
+pois ele só identifica o autor,só podendo ser realizado ações por usuários logados.
