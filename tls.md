@@ -9,7 +9,19 @@
 ```bash
 openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:4096
 
+**openssl**	É o executável da biblioteca **OpenSSL**. É ela quem faz toda a mágica criptográfica.
+**genpkey**	Subcomando para gerar uma chave privada (private key). É a forma mais moderna e recomendada (substitui o antigo genrsa).
+**-algorithm RSA**	Define que o algoritmo usado será o RSA (o mais comum para servidores web/SSL).
+**-out server.key**	Define o nome do arquivo de saída. O arquivo será salvo na pasta atual onde você está no Git Bash com o nome **server.key.**
+**-pkeyopt rsa_keygen_bits:4096**	Define o tamanho da chave em 4096 bits. Quanto maior, mais seguro (o padrão antigo era 2048, mas 4096 é excelente para segurança atual).
+
+
 ```
+
+
+
+
+
 certificado do <https> 
 ```bash
 
