@@ -20,15 +20,20 @@ bash openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:409
 
 certificado do <https> 
 ```bash
-
 openssl req -new -x509 -key server.key -out server.crt -days 365 -subj '//CN=localhost'
-
 ```
++ **openssl**	O executável da biblioteca.
++ **req**	Subcomando para gerenciar Certificate Requests (CSR) e certificados.
++ **-new**	Indica que estamos criando um novo certificado (ou uma nova requisição).
++ **-x509**	Faz o OpenSSL gerar um certificado autoassinado no formato X.509 (o padrão mundial para SSL/TLS) em vez de gerar uma requisição (CSR) que precisaria ser enviada a uma Autoridade Certificadora (CA).
++ **-key server.key**	Aponta para o arquivo da chave privada que você gerou no comando anterior. É ela que vai "assinar" digitalmente o certificado.
++ **-out server.crt**	Define o nome do arquivo de saída onde o certificado será salvo (a extensão .crt é padrão para certificados).
++ **-days 365**	Define o prazo de validade: 365 dias (1 ano). Após esse período, o certificado expira e precisa ser renovado.
++ **-subj** '//CN=localhost'	Define o "assunto" (Subject Distinguished Name) do certificado diretamente na linha de comando, sem fazer perguntas interativas (como País, Estado, etc.).
 
 # O <PEM>  da chave
 ```bash
 openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:4096
-
 ```
 configurações
 ```txt
@@ -48,11 +53,7 @@ DNS.1 = localhost
 IP.1 = 127.0.0.1
 
 ```
-
-
 ```bash
 openssl req -new -key key.pem -out server.csr -config san.cnf
 
 ```
-
-Tenho que estudar um a um para entender tudo
