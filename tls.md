@@ -36,7 +36,9 @@ openssl req -new -x509 -key server.key -out server.crt -days 365 -subj '//CN=loc
 ```bash
 openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:4096
 ```
-configurações
+mesmo comando que o primeiro só  muda o tipo de arquivo,agora ele é tipo pem,arquivo de base 64,embora o outro também seja ele é tipado como uma chave
+
++ **configurações**
 ```txt
 [req]
 distinguished_name = req_distinguished_name
