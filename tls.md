@@ -7,6 +7,7 @@
  a Chave 1
  VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 ```bash openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:4096
+
 ```
 
  **openssl**	É o executável da biblioteca **OpenSSL**. É ela quem faz toda a mágica criptográfica.
