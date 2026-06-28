@@ -18,7 +18,7 @@ bash openssl genpkey -algorithm RSA -out server.key -pkeyopt rsa_keygen_bits:409
 + **-pkeyopt rsa_keygen_bits:4096**	Define o tamanho da chave em 4096 bits. Quanto maior, mais seguro 
  (o padrão antigo era 2048, mas 4096 é excelente para segurança atual).
 
-certificado do <https> 
+certificado do **https** 
 ```bash
 openssl req -new -x509 -key server.key -out server.crt -days 365 -subj '//CN=localhost'
 ```
