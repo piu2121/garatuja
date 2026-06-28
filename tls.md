@@ -39,7 +39,7 @@ openssl genpkey -algorithm RSA -out key.pem -pkeyopt rsa_keygen_bits:4096
 mesmo comando que o primeiro só  muda o tipo de arquivo,agora ele é tipo pem,arquivo de base 64,embora o outro também seja ele é tipado como uma chave.este 
 como um arquivo base64 comum
 
-+ **configurações**
++ **configurações,arquivo em txt**
 ```txt
 [req]
 distinguished_name = req_distinguished_name
@@ -57,7 +57,26 @@ DNS.1 = localhost
 IP.1 = 127.0.0.1
 
 ```
++**req**	Seção principal do comando req.
++ **distinguished_name = req_distinguished_name**	Aponta para a seção que contém os dados do "Dono" do certificado.
++ **req_extensions = req_ext**	A chave mais importante aqui! Diz ao OpenSSL para incluir as extensões definidas na seção [req_ext] dentro da CSR.
++ **prompt = no** Desativa o modo interativo. O OpenSSL NÃO vai perguntar "País?", "Estado?", "Organização?". Ele vai ler tudo automaticamente do arquivo.
++ **req_distinguished_name**	Define o Distinguished Name (DN).
++ **CN = localhost**	Define o Common Name como localhost. (Hoje em dia os navegadores ignoram o CN para validação de domínio, mas ainda é bom preencher).
++ **req_ext**	Seção que lista quais extensões serão pedidas no certificado.
++ **subjectAltName = @alt_names**	Puxa a lista de nomes alternativos da seção [alt_names].
++ **alt_names**	A estrela do show (e a salvação contra erros de navegador!).
++ **DNS.1 = localhost**	Define que o certificado é válido para o domínio localhost.
++ **IP.1 = 127.0.0.1**	Define que o certificado também é válido para o endereço IP 127.0.0.1.
+
+
+**comando para gerar uma requisição,tu manda essa requisição para entidades de assinaturas https para eles assinarem e tua criptografia ter credibildiade**
 ```bash
 openssl req -new -key key.pem -out server.csr -config san.cnf
 
 ```
++ **openssl req**	Ferramenta para gerenciar CSR e certificados.
++ **-new**	Cria uma nova CSR.
++ **-key key.pem**	Usa a chave privada key.pem (gerada no passo anterior) para assinar a requisição.
++ **-out server.csr**	Salva a saída no arquivo server.csr. (.csr é a extensão padrão para Certificate Signing Requests).
++ **-config san.cnf**	Força o OpenSSL a usar o seu arquivo san.cnf em vez do arquivo de configuração padrão do sistema (openssl.cnf). Isso é essencial, pois o arquivo padrão geralmente não habilita o envio de SAN pela CSR.
