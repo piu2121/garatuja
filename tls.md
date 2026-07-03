@@ -1,5 +1,5 @@
 ## Usar o git bash
-**ele é instalado quando tu baixa o o git**
+**ele é instalado quando tu baixa o  git**
 
 
 # Para criar a chave
