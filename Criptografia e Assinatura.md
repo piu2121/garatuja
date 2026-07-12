@@ -17,4 +17,4 @@ Serve como o nome sugere,ela garante a identidade do remetente.se um dado for al
 
 ## criptografia
 Tem alguns algoritmos de criptografia que funciona com assinaturas,caso o valor for   interceptado e alterado,
-criptografia basicamente a  publica criptografa e a mestre lê
+criptografia basicamente a  publica criptografa e a mestre lê, e o oposto também
